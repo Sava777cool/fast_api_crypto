@@ -1,8 +1,11 @@
 import os
 import aiohttp
+import logging
 
 from app.internal.schemas.currency import Symbols
 from app.package.redis_tools.tools import RedisTools
+
+logger = logging.getLogger(__name__)
 
 
 async def on_startup():
@@ -11,6 +14,9 @@ async def on_startup():
             response_json = await response.json()
             parsed_pairs = Symbols(**response_json)
             cutted_pairs = parsed_pairs.symbols[:20]
+
+            print(f"cutted_pairs: {cutted_pairs}")
+
             symbols = [pair.symbol for pair in cutted_pairs]
 
             for symbol in symbols:

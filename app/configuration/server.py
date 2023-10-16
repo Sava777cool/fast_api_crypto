@@ -17,7 +17,7 @@ class Server:
 
     @staticmethod
     def __register_events(app):
-        app.on_event("startup")(repeat_every(seconds=60 * 60 * 12)(on_startup))
+        app.on_event("startup")(repeat_every(seconds=5)(on_startup))
         app.on_event("startup")(repeat_every(seconds=5)(on_loop_startup))
 
     @staticmethod

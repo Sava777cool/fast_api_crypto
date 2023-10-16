@@ -2,7 +2,7 @@ import redis
 
 
 class RedisTools:
-    __redis_connect = redis.Redis(host="redis", port=6379)
+    __redis_connect = redis.Redis(host="localhost", port=6379)
 
     @classmethod
     def set_pair(cls, pair: str, price: str):
